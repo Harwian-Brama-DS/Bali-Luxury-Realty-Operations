@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harwian Brama | VA Project Management Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--bg4:#22222f;
+--text:#e8e6e3;--text2:#9d9b97;--text3:#6b6966;
+--gold:#c9a84c;--gold2:#e6c565;--gold-bg:rgba(201,168,76,0.08);--gold-border:rgba(201,168,76,0.2);
+--teal:#2dd4a8;--teal-bg:rgba(45,212,168,0.08);
+--coral:#e87461;--coral-bg:rgba(232,116,97,0.08);
+--blue:#5b8def;--blue-bg:rgba(91,141,239,0.08);
+--purple:#a78bfa;--purple-bg:rgba(167,139,250,0.08);
+--pink:#f472b6;--pink-bg:rgba(244,114,182,0.08);
+--radius:10px;--radius-lg:16px;
+--font-body:'DM Sans',sans-serif;--font-display:'Playfair Display',serif;--font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none;transition:color .2s}
+a:hover{color:var(--gold2)}
+
+.grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:.03;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-30%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.06),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40%;left:-20%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,168,0.04),transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--gold-border);border-radius:100px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:32px;background:var(--gold-bg)}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:var(--font-display);font-size:clamp(42px,6vw,72px);font-weight:600;line-height:1.1;margin-bottom:20px;color:#fff}
+.hero h1 span{color:var(--gold);font-style:italic}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text2);max-width:600px;margin-bottom:40px}
+.hero-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;max-width:700px}
+.metric-card{padding:20px;border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);background:var(--bg2);text-align:center;transition:border-color .3s,transform .3s}
+.metric-card:hover{border-color:var(--gold-border);transform:translateY(-2px)}
+.metric-val{font-family:var(--font-mono);font-size:28px;font-weight:700;color:#fff;line-height:1.2}
+.metric-val.gold{color:var(--gold)}
+.metric-label{font-size:12px;color:var(--text3);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.04);padding:0}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-logo{font-family:var(--font-display);font-size:16px;color:#fff;font-weight:600}
+.nav-links{display:flex;gap:24px;font-size:13px}
+.nav-links a{color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+
+/* SECTIONS */
+section{padding:100px 0}
+.section-label{display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-family:var(--font-mono)}
+.section-title{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:600;color:#fff;margin-bottom:16px;line-height:1.2}
+.section-desc{color:var(--text2);max-width:640px;margin-bottom:48px;font-size:17px}
+
+/* SCENARIO */
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.scenario-card{padding:32px;border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);background:var(--bg2)}
+.scenario-card h3{font-family:var(--font-display);font-size:20px;color:#fff;margin-bottom:12px}
+.scenario-card p{color:var(--text2);font-size:15px;line-height:1.7}
+.pain-points{list-style:none;display:flex;flex-direction:column;gap:12px}
+.pain-points li{display:flex;align-items:flex-start;gap:10px;color:var(--text2);font-size:14px;line-height:1.5}
+.pain-points li::before{content:'×';color:var(--coral);font-weight:700;font-size:16px;line-height:1.5;flex-shrink:0}
+.team-grid{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.team-member{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius);background:var(--bg3)}
+.team-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;flex-shrink:0}
+.team-member .name{font-size:14px;font-weight:500;color:#fff}
+.team-member .role{font-size:12px;color:var(--text3)}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:1fr;gap:24px}
+.project-card{border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);background:var(--bg2);overflow:hidden;transition:border-color .3s}
+.project-card:hover{border-color:var(--gold-border)}
+.project-header{padding:28px 32px 20px;display:flex;align-items:flex-start;gap:16px}
+.project-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.project-header-text h3{font-family:var(--font-display);font-size:20px;color:#fff;margin-bottom:4px}
+.project-header-text .tag{font-size:11px;padding:3px 10px;border-radius:100px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:1px}
+.project-body{padding:0 32px 28px}
+.project-body p{color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:16px}
+.project-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px}
+.pstat{text-align:center;padding:12px 8px;border-radius:var(--radius);background:var(--bg3)}
+.pstat .v{font-family:var(--font-mono);font-size:18px;font-weight:600;color:#fff}
+.pstat .l{font-size:11px;color:var(--text3);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+.project-sections{padding:0 32px 28px}
+.section-flow{display:flex;gap:8px;flex-wrap:wrap}
+.flow-step{padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,0.08);background:var(--bg3);color:var(--text2);position:relative}
+.flow-step::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:11px}
+.flow-step:last-child::after{display:none}
+
+/* TIMELINE GANTT */
+.gantt-container{overflow-x:auto;padding-bottom:16px;-webkit-overflow-scrolling:touch}
+.gantt{position:relative;min-width:800px}
+.gantt-header{display:grid;grid-template-columns:200px repeat(13,1fr);border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:12px;margin-bottom:8px}
+.gantt-header span{font-size:11px;color:var(--text3);text-align:center;font-family:var(--font-mono);letter-spacing:1px;text-transform:uppercase}
+.gantt-header span:first-child{text-align:left}
+.gantt-row{display:grid;grid-template-columns:200px repeat(13,1fr);align-items:center;height:40px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.gantt-row:hover{background:rgba(255,255,255,0.015)}
+.gantt-label{font-size:13px;color:var(--text2);padding-right:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gantt-label.bold{color:#fff;font-weight:500}
+.gantt-bar{height:24px;border-radius:4px;position:relative;grid-column:var(--start)/var(--end);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:#fff;letter-spacing:.5px;opacity:.85;transition:opacity .2s}
+.gantt-bar:hover{opacity:1}
+.gantt-bar.teal{background:linear-gradient(135deg,#1a8a6e,#2dd4a8)}
+.gantt-bar.blue{background:linear-gradient(135deg,#3d6bc9,#5b8def)}
+.gantt-bar.coral{background:linear-gradient(135deg,#c45040,#e87461)}
+.gantt-bar.gold{background:linear-gradient(135deg,#9e7d2e,#c9a84c)}
+.gantt-bar.purple{background:linear-gradient(135deg,#7c5cc4,#a78bfa)}
+.gantt-bar.pink{background:linear-gradient(135deg,#c24080,#f472b6)}
+.gantt-milestone{width:12px;height:12px;transform:rotate(45deg);position:absolute;top:50%;margin-top:-6px}
+.gantt-section{grid-column:1/-1;padding:8px 0 4px;margin-top:8px}
+.gantt-section span{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-family:var(--font-mono)}
+
+/* DEAL CARDS */
+.deals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.deal-card{border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);background:var(--bg2);padding:28px;position:relative;overflow:hidden}
+.deal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.deal-card.d1::before{background:linear-gradient(90deg,#5b8def,#3d6bc9)}
+.deal-card.d2::before{background:linear-gradient(90deg,#f472b6,#c24080)}
+.deal-card.d3::before{background:linear-gradient(90deg,#2dd4a8,#1a8a6e)}
+.deal-card h4{font-family:var(--font-display);font-size:18px;color:#fff;margin-bottom:4px}
+.deal-buyer{font-size:13px;color:var(--text3);margin-bottom:16px}
+.deal-value{font-family:var(--font-mono);font-size:24px;font-weight:700;margin-bottom:4px}
+.deal-commission{font-size:12px;color:var(--text3)}
+.deal-phases{margin-top:20px;display:flex;flex-direction:column;gap:6px}
+.phase-row{display:flex;align-items:center;gap:10px}
+.phase-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.phase-row .phase-name{font-size:12px;color:var(--text2);flex:1}
+.phase-row .phase-date{font-size:11px;font-family:var(--font-mono);color:var(--text3)}
+.phase-connector{width:1px;height:8px;background:rgba(255,255,255,0.1);margin-left:3.5px}
+
+/* SKILLS */
+.skills-section{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.skill-group{padding:28px;border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);background:var(--bg2)}
+.skill-group h3{font-size:14px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:20px;font-family:var(--font-mono)}
+.skill-list{display:flex;flex-direction:column;gap:12px}
+.skill-item{display:flex;justify-content:space-between;align-items:center}
+.skill-item .name{font-size:14px;color:var(--text)}
+.skill-bar-wrap{width:120px;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
+.skill-bar{height:100%;border-radius:2px;background:var(--gold)}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:48px}
+.result-card{padding:28px;border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);background:var(--bg2);text-align:center;position:relative;overflow:hidden}
+.result-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px}
+.result-card.r1::after{background:var(--teal)}
+.result-card.r2::after{background:var(--blue)}
+.result-card.r3::after{background:var(--gold)}
+.result-card.r4::after{background:var(--coral)}
+.result-icon{font-size:28px;margin-bottom:12px}
+.result-num{font-family:var(--font-mono);font-size:32px;font-weight:700;color:#fff}
+.result-desc{font-size:13px;color:var(--text3);margin-top:6px}
+
+/* CTA */
+.cta{text-align:center;padding:80px 0 120px}
+.cta h2{font-family:var(--font-display);font-size:clamp(28px,4vw,40px);color:#fff;margin-bottom:16px}
+.cta p{color:var(--text2);max-width:500px;margin:0 auto 32px;font-size:16px}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border:1px solid var(--gold);border-radius:100px;color:var(--gold);font-size:14px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:all .3s;cursor:pointer;background:transparent}
+.cta-btn:hover{background:var(--gold);color:var(--bg)}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(255,255,255,0.04);padding:32px 0;text-align:center}
+footer p{font-size:12px;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.scenario-grid,.skills-section{grid-template-columns:1fr}
+.hero-metrics{grid-template-columns:repeat(2,1fr)}
+.gantt-container{margin:0 -24px;padding:0 24px 16px}
+.nav-links{gap:12px}
+.nav-links a{font-size:11px;letter-spacing:1px}
+.deals-grid{grid-template-columns:1fr}
+}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav>
+<div class="container">
+<div class="nav-logo">Harwian Brama</div>
+<div class="nav-links">
+<a href="#overview">Overview</a>
+<a href="#projects">Projects</a>
+<a href="#timeline">Timeline</a>
+<a href="#deals">Deals</a>
+<a href="#results">Results</a>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="overview">
+<div class="container hero-inner">
+<div class="hero-badge"><span class="dot"></span> Case Study · Q1 2026</div>
+<h1>Bali Luxury Realty<br><span>Operations Hub</span></h1>
+<p class="hero-sub">End to end real estate operations management using Asana. Covering property listings and buyer pipeline to open house coordination and deal closing for a boutique luxury agency in Bali, Indonesia.</p>
+<div class="hero-metrics">
+<div class="metric-card">
+<div class="metric-val gold">IDR 69.8B</div>
+<div class="metric-label">Pipeline Value</div>
+</div>
+<div class="metric-card">
+<div class="metric-val">4</div>
+<div class="metric-label">Integrated Projects</div>
+</div>
+<div class="metric-card">
+<div class="metric-val">47</div>
+<div class="metric-label">Managed Tasks</div>
+</div>
+<div class="metric-card">
+<div class="metric-val gold">12</div>
+<div class="metric-label">Week Timeline</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SCENARIO -->
+<section id="scenario">
+<div class="container">
+<span class="section-label">The Challenge</span>
+<h2 class="section-title">Client Scenario</h2>
+<p class="section-desc">Made Suteja, Principal Broker of Bali Luxury Realty, needed a VA to transform his chaotic operations into a structured, trackable system across 6 coverage areas in Bali.</p>
+
+<div class="scenario-grid fade-up">
+<div class="scenario-card">
+<h3>Pain Points Before VA</h3>
+<ul class="pain-points">
+<li>Fragmented listing data across WhatsApp groups and spreadsheets</li>
+<li>35% of client follow-ups were missed or delayed</li>
+<li>Double-bookings on open house events with no central calendar</li>
+<li>Zero real-time visibility into deal pipeline worth billions</li>
+<li>Average closing time of 45+ days with no standard checklist</li>
+</ul>
+</div>
+<div class="scenario-card">
+<h3>Team Structure</h3>
+<div class="team-grid">
+<div class="team-member">
+<div class="team-avatar" style="background:var(--gold)">MS</div>
+<div><div class="name">Made Suteja</div><div class="role">Principal Broker</div></div>
+</div>
+<div class="team-member">
+<div class="team-avatar" style="background:var(--teal)">WK</div>
+<div><div class="name">Wayan Kartika</div><div class="role">Senior Realtor · Seminyak & Canggu</div></div>
+</div>
+<div class="team-member">
+<div class="team-avatar" style="background:var(--blue)">DA</div>
+<div><div class="name">David Anderson</div><div class="role">Senior Realtor · Uluwatu & Premium</div></div>
+</div>
+<div class="team-member">
+<div class="team-avatar" style="background:var(--purple)">KA</div>
+<div><div class="name">Komang Ayu</div><div class="role">Senior Realtor · Ubud & Sanur</div></div>
+</div>
+<div class="team-member">
+<div class="team-avatar" style="background:var(--pink)">PR</div>
+<div><div class="name">Putu Rina</div><div class="role">Admin & Lead Intake</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 4 PROJECTS -->
+<section id="projects">
+<div class="container">
+<span class="section-label">Asana Workspace</span>
+<h2 class="section-title">4 Integrated Projects</h2>
+<p class="section-desc">Each project solves a specific pain point while connecting to the others, forming a complete operations system that runs on autopilot.</p>
+
+<div class="projects-grid">
+<!-- P1 -->
+<div class="project-card fade-up">
+<div class="project-header">
+<div class="project-icon" style="background:var(--teal-bg);color:var(--teal)">🏡</div>
+<div class="project-header-text">
+<h3>Listing Management Hub</h3>
+<span class="tag" style="background:var(--teal-bg);color:var(--teal)">Board View</span>
+</div>
+</div>
+<div class="project-body">
+<p>Central database for all 12 active property listings. Every property has standardized data: specs, pricing, photos, legal docs status, and marketing progress. Realtors see their assigned listings at a glance.</p>
+<div class="project-stats">
+<div class="pstat"><div class="v">12</div><div class="l">Properties</div></div>
+<div class="pstat"><div class="v">5</div><div class="l">Stages</div></div>
+<div class="pstat"><div class="v">IDR 187.6B</div><div class="l">Portfolio</div></div>
+<div class="pstat"><div class="v">6</div><div class="l">Areas</div></div>
+</div>
+</div>
+<div class="project-sections">
+<div class="section-flow">
+<span class="flow-step">Pre-Listing</span>
+<span class="flow-step">Active</span>
+<span class="flow-step">Under Offer</span>
+<span class="flow-step">Off Market</span>
+<span class="flow-step">Sold</span>
+</div>
+</div>
+</div>
+
+<!-- P2 -->
+<div class="project-card fade-up">
+<div class="project-header">
+<div class="project-icon" style="background:var(--blue-bg);color:var(--blue)">💼</div>
+<div class="project-header-text">
+<h3>Buyer Pipeline & CRM</h3>
+<span class="tag" style="background:var(--blue-bg);color:var(--blue)">Board View</span>
+</div>
+</div>
+<div class="project-body">
+<p>6-stage sales funnel tracking every client from first inquiry to deal close. Standardized follow-up sequences per stage ensure zero missed follow-ups. New leads auto-enter via Asana Form.</p>
+<div class="project-stats">
+<div class="pstat"><div class="v">10</div><div class="l">Clients</div></div>
+<div class="pstat"><div class="v">6</div><div class="l">Stages</div></div>
+<div class="pstat"><div class="v">5</div><div class="l">Nationalities</div></div>
+<div class="pstat"><div class="v">IDR 69.8B</div><div class="l">Pipeline</div></div>
+</div>
+</div>
+<div class="project-sections">
+<div class="section-flow">
+<span class="flow-step">New Lead</span>
+<span class="flow-step">Contacted</span>
+<span class="flow-step">Shown</span>
+<span class="flow-step">Negotiating</span>
+<span class="flow-step">LOI Signed</span>
+<span class="flow-step">Closed</span>
+</div>
+</div>
+</div>
+
+<!-- P3 -->
+<div class="project-card fade-up">
+<div class="project-header">
+<div class="project-icon" style="background:var(--coral-bg);color:var(--coral)">📅</div>
+<div class="project-header-text">
+<h3>Open House Event Series</h3>
+<span class="tag" style="background:var(--coral-bg);color:var(--coral)">Calendar View</span>
+</div>
+</div>
+<div class="project-body">
+<p>8 property viewing events across Q1 2026 with a 13 task checklist per event. Preparation starts 14 days before and wraps up with attendee follow up the next day. Zero double bookings, zero forgotten vendors.</p>
+<div class="project-stats">
+<div class="pstat"><div class="v">8</div><div class="l">Events</div></div>
+<div class="pstat"><div class="v">13</div><div class="l">Tasks/Event</div></div>
+<div class="pstat"><div class="v">68</div><div class="l">Max Guests</div></div>
+<div class="pstat"><div class="v">3</div><div class="l">Months</div></div>
+</div>
+</div>
+<div class="project-sections">
+<div class="section-flow">
+<span class="flow-step">Jan (3)</span>
+<span class="flow-step">Feb (3)</span>
+<span class="flow-step">Mar (2)</span>
+</div>
+</div>
+</div>
+
+<!-- P4 -->
+<div class="project-card fade-up">
+<div class="project-header">
+<div class="project-icon" style="background:var(--gold-bg);color:var(--gold)">🔑</div>
+<div class="project-header-text">
+<h3>Deal Closing & Onboarding</h3>
+<span class="tag" style="background:var(--gold-bg);color:var(--gold)">List + Timeline</span>
+</div>
+</div>
+<div class="project-body">
+<p>Standardized 5-phase, 20-step closing checklist per deal, covering everything from LOI to key handover. Each phase has strict dependencies: Phase 2 cannot start until Phase 1 is complete. Reduces closing time from 45 to 34 days.</p>
+<div class="project-stats">
+<div class="pstat"><div class="v">3</div><div class="l">Active Deals</div></div>
+<div class="pstat"><div class="v">5</div><div class="l">Phases</div></div>
+<div class="pstat"><div class="v">16</div><div class="l">Tasks</div></div>
+<div class="pstat"><div class="v">IDR 3.49B</div><div class="l">Commission</div></div>
+</div>
+</div>
+<div class="project-sections">
+<div class="section-flow">
+<span class="flow-step">Documents</span>
+<span class="flow-step">Due Diligence</span>
+<span class="flow-step">AJB</span>
+<span class="flow-step">Signing</span>
+<span class="flow-step">Handover</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GANTT TIMELINE -->
+<section id="timeline" style="background:var(--bg2)">
+<div class="container">
+<span class="section-label">Project Timeline</span>
+<h2 class="section-title">Q1 2026 Gantt Chart</h2>
+<p class="section-desc">Visual timeline showing all 3 active deals progressing through 5 phases, alongside 8 open house events, all managed simultaneously.</p>
+
+<div class="gantt-container fade-up">
+<div class="gantt">
+<div class="gantt-header">
+<span>Task</span>
+<span>W1</span><span>W2</span><span>W3</span><span>W4</span>
+<span>W5</span><span>W6</span><span>W7</span><span>W8</span>
+<span>W9</span><span>W10</span><span>W11</span><span>W12</span>
+<span>W13</span>
+</div>
+
+<div class="gantt-section"><span>Deal 1 · Uluwatu Cliff Estate · IDR 42B</span></div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.1 Documents</div>
+<div class="gantt-bar blue" style="--start:2;--end:4">5–12 Jan</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.2 Due Diligence</div>
+<div class="gantt-bar blue" style="--start:3;--end:5">13–25 Jan</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.3 Sale Agreement</div>
+<div class="gantt-bar blue" style="--start:5;--end:7">26 Jan–10 Feb</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.4 Signing</div>
+<div class="gantt-bar blue" style="--start:7;--end:9">11–20 Feb</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label bold">Ph.5 Close ✔</div>
+<div class="gantt-bar blue" style="--start:9;--end:10">21–28 Feb</div>
+</div>
+
+<div class="gantt-section"><span>Deal 2 · Bingin Cliff Villa · IDR 22B</span></div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.1 Documents</div>
+<div class="gantt-bar pink" style="--start:2;--end:4">9–16 Jan</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.2 Due Diligence</div>
+<div class="gantt-bar pink" style="--start:3;--end:6">17 Jan–5 Feb</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.3 Sale Agreement</div>
+<div class="gantt-bar pink" style="--start:6;--end:9">6–20 Feb</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.4 Signing</div>
+<div class="gantt-bar pink" style="--start:9;--end:11">21 Feb–10 Mar</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label bold">Ph.5 Close ✔</div>
+<div class="gantt-bar pink" style="--start:11;--end:13">11–20 Mar</div>
+</div>
+
+<div class="gantt-section"><span>Deal 3 · Canggu Land Parcel · IDR 5.8B · Fastest</span></div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.1 Documents</div>
+<div class="gantt-bar teal" style="--start:3;--end:4">15–19 Jan</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.2 Due Diligence</div>
+<div class="gantt-bar teal" style="--start:4;--end:5">20–30 Jan</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.3 Sale Agreement</div>
+<div class="gantt-bar teal" style="--start:5;--end:6">31 Jan–5 Feb</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label">Ph.4 Signing</div>
+<div class="gantt-bar teal" style="--start:6;--end:8">6–15 Feb</div>
+</div>
+<div class="gantt-row">
+<div class="gantt-label bold">Ph.5 Close ✔</div>
+<div class="gantt-bar teal" style="--start:8;--end:9">16–20 Feb</div>
+</div>
+
+<div class="gantt-section"><span>Open House Events</span></div>
+<div class="gantt-row">
+<div class="gantt-label">8 Events (Jan–Mar)</div>
+<div class="gantt-bar gold" style="--start:2;--end:3">OH#1</div>
+<div class="gantt-bar gold" style="--start:3;--end:4">OH#2-3</div>
+<div class="gantt-bar gold" style="--start:6;--end:7">OH#4-5</div>
+<div class="gantt-bar gold" style="--start:8;--end:9">OH#6</div>
+<div class="gantt-bar gold" style="--start:10;--end:11">OH#7</div>
+<div class="gantt-bar gold" style="--start:12;--end:13">OH#8</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 3 DEALS -->
+<section id="deals">
+<div class="container">
+<span class="section-label">Deal Pipeline</span>
+<h2 class="section-title">3 Active Deals Worth IDR 69.8 Billion</h2>
+<p class="section-desc">Each deal follows a strict 5-phase dependency chain. Phase transitions require task completion with documentary proof before proceeding.</p>
+
+<div class="deals-grid fade-up">
+<div class="deal-card d1">
+<h4>The Cliffside Estate, Uluwatu</h4>
+<div class="deal-buyer">Emma van der Berg · Dutch · Investment</div>
+<div class="deal-value" style="color:var(--blue)">IDR 42,000,000,000</div>
+<div class="deal-commission">Commission: IDR 2.1B (5%) · Realtor: David Anderson</div>
+<div class="deal-phases">
+<div class="phase-row"><div class="phase-dot" style="background:var(--blue)"></div><span class="phase-name">Phase 1: Document Collection</span><span class="phase-date">5–12 Jan</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--blue)"></div><span class="phase-name">Phase 2: Due Diligence</span><span class="phase-date">13–25 Jan</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--blue)"></div><span class="phase-name">Phase 3: AJB Agreement</span><span class="phase-date">26 Jan–10 Feb</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--blue)"></div><span class="phase-name">Phase 4: Signing & Payment</span><span class="phase-date">11–20 Feb</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--blue)"></div><span class="phase-name">Phase 5: Handover & Close</span><span class="phase-date">21–28 Feb</span></div>
+</div>
+</div>
+
+<div class="deal-card d2">
+<h4>Bingin Cliff Villa 4BR, Uluwatu</h4>
+<div class="deal-buyer">Marco Bianchi · Italian · Dream Home</div>
+<div class="deal-value" style="color:var(--pink)">IDR 22,000,000,000</div>
+<div class="deal-commission">Commission: IDR 1.1B (5%) · Realtor: David Anderson</div>
+<div class="deal-phases">
+<div class="phase-row"><div class="phase-dot" style="background:var(--pink)"></div><span class="phase-name">Phase 1: Document Collection</span><span class="phase-date">9–16 Jan</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--pink)"></div><span class="phase-name">Phase 2: Due Diligence</span><span class="phase-date">17 Jan–5 Feb</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--pink)"></div><span class="phase-name">Phase 3: AJB Agreement</span><span class="phase-date">6–20 Feb</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--pink)"></div><span class="phase-name">Phase 4: Signing & Payment</span><span class="phase-date">21 Feb–10 Mar</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--pink)"></div><span class="phase-name">Phase 5: Handover & Close</span><span class="phase-date">11–20 Mar</span></div>
+</div>
+</div>
+
+<div class="deal-card d3">
+<h4>Petitenget Land Parcel, Seminyak</h4>
+<div class="deal-buyer">PT. Surya Investama · Indonesian Corp · Development</div>
+<div class="deal-value" style="color:var(--teal)">IDR 5,800,000,000</div>
+<div class="deal-commission">Commission: IDR 290M (5%) · Realtor: Wayan Kartika</div>
+<div class="deal-phases">
+<div class="phase-row"><div class="phase-dot" style="background:var(--teal)"></div><span class="phase-name">Phase 1: Document Collection</span><span class="phase-date">15–19 Jan</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--teal)"></div><span class="phase-name">Phase 2: Due Diligence</span><span class="phase-date">20–30 Jan</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--teal)"></div><span class="phase-name">Phase 3: AJB Agreement</span><span class="phase-date">31 Jan–5 Feb</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--teal)"></div><span class="phase-name">Phase 4: Signing & Payment</span><span class="phase-date">6–15 Feb</span></div>
+<div class="phase-connector"></div>
+<div class="phase-row"><div class="phase-dot" style="background:var(--teal)"></div><span class="phase-name">Phase 5: Handover & Close</span><span class="phase-date">16–20 Feb</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ASANA CONFIG -->
+<section id="config" style="background:var(--bg2)">
+<div class="container">
+<span class="section-label">Technical Implementation</span>
+<h2 class="section-title">Asana Configuration</h2>
+<p class="section-desc">Beyond task creation, the workspace includes custom fields, automation rules, dependencies, and portfolio-level dashboards.</p>
+
+<div class="skills-section fade-up">
+<div class="skill-group">
+<h3>28 Custom Fields</h3>
+<div class="skill-list">
+<div class="skill-item"><span class="name">Listing Hub · 10 fields (Price, Type, Area, Status...)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:100%"></div></div></div>
+<div class="skill-item"><span class="name">Pipeline CRM · 10 fields (Budget, Stage, Probability...)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:100%"></div></div></div>
+<div class="skill-item"><span class="name">Deal Closing · 8 fields (Value, Commission, Phase...)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+</div>
+</div>
+<div class="skill-group">
+<h3>13 Automation Rules</h3>
+<div class="skill-list">
+<div class="skill-item"><span class="name">Pipeline auto-assign & follow-up alerts (5)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:100%"></div></div></div>
+<div class="skill-item"><span class="name">Open House subtask generation & reminders (4)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+<div class="skill-item"><span class="name">Deal phase notifications & status updates (4)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+</div>
+</div>
+<div class="skill-group">
+<h3>Task Dependencies</h3>
+<div class="skill-list">
+<div class="skill-item"><span class="name">Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 5</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:100%"></div></div></div>
+<div class="skill-item"><span class="name">Cross-project links (Pipeline → Deal Closing)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+<div class="skill-item"><span class="name">Listing Hub → Sold when deal closes</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+</div>
+</div>
+<div class="skill-group">
+<h3>Portfolio Dashboard</h3>
+<div class="skill-list">
+<div class="skill-item"><span class="name">4 Projects unified in single Portfolio view</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:100%"></div></div></div>
+<div class="skill-item"><span class="name">Weekly Status Updates (every Friday 17:00 WITA)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+<div class="skill-item"><span class="name">6 dashboard charts (Pipeline, Listings, Gantt...)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+<div class="container">
+<span class="section-label">Impact & Outcomes</span>
+<h2 class="section-title">Projected Q1 2026 Results</h2>
+<p class="section-desc">Measurable improvements in every area of operations, from follow-up rates to closing speed.</p>
+
+<div class="results-grid fade-up">
+<div class="result-card r1">
+<div class="result-icon">📊</div>
+<div class="result-num">IDR 3.49B</div>
+<div class="result-desc">Total Commission Earned</div>
+</div>
+<div class="result-card r2">
+<div class="result-icon">⚡</div>
+<div class="result-num">36 days</div>
+<div class="result-desc">Fastest Deal Close (from 45)</div>
+</div>
+<div class="result-card r3">
+<div class="result-icon">🎯</div>
+<div class="result-num">&lt;7%</div>
+<div class="result-desc">Follow-up Miss Rate (from 35%)</div>
+</div>
+<div class="result-card r4">
+<div class="result-icon">🏡</div>
+<div class="result-num">0</div>
+<div class="result-desc">Double-Bookings (8 events)</div>
+</div>
+</div>
+
+<div class="skills-section fade-up">
+<div class="skill-group">
+<h3>VA Skills Demonstrated</h3>
+<div class="skill-list">
+<div class="skill-item"><span class="name">Asana Workspace Architecture</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:98%"></div></div></div>
+<div class="skill-item"><span class="name">Multi-Project Coordination</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
+<div class="skill-item"><span class="name">Automation & Workflow Design</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+<div class="skill-item"><span class="name">CRM & Pipeline Management</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
+<div class="skill-item"><span class="name">Event Coordination</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+<div class="skill-item"><span class="name">Reporting & Status Communication</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+</div>
+</div>
+<div class="skill-group">
+<h3>Tools & Expertise</h3>
+<div class="skill-list">
+<div class="skill-item"><span class="name">Asana (Projects, Rules, Portfolios)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:98%"></div></div></div>
+<div class="skill-item"><span class="name">Real Estate Operations</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+<div class="skill-item"><span class="name">Cross-functional Team Management</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+<div class="skill-item"><span class="name">Data-driven Reporting</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+<div class="skill-item"><span class="name">Process Documentation (SOP)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+<div class="skill-item"><span class="name">Indonesian Legal (AJB, BPN, PPAT)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+<div class="container">
+<h2>Ready to streamline<br>your operations?</h2>
+<p>I help businesses build structured, scalable operations systems using Asana so nothing falls through the cracks.</p>
+<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+<a href="mailto:harwianbrama02@gmail.com" class="cta-btn">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+Email Me
+</a>
+<a href="https://www.linkedin.com/in/harwian-brama/" target="_blank" class="cta-btn">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container">
+<p>© 2026 Harwian Brama · VA Project Management Portfolio</p>
+</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+link.addEventListener('click', function(e) {
+document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+this.classList.add('active');
+});
+});
+</script>
+</body>
+</html>
